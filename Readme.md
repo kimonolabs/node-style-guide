@@ -1,4 +1,4 @@
-# Node.js Style Guide
+# Kimono JS Style Guide
 
 This is a guide for writing consistent and aesthetically pleasing node.js code.
 It is inspired by what is popular within the community, and flavored with some
@@ -8,7 +8,7 @@ There is a .jshintrc which enforces these rules as closely as possible. You can
 either use that and adjust it, or use
 [this script](https://gist.github.com/kentcdodds/11293570) to make your own.
 
-This guide was created by [Felix Geisendörfer](http://felixge.de/) and is
+This guide was originally created by [Felix Geisendörfer](http://felixge.de/) and is
 licensed under the [CC BY-SA 3.0](http://creativecommons.org/licenses/by-sa/3.0/)
 license. You are encouraged to fork this repository and make adjustments
 according to your preferences.
@@ -25,7 +25,7 @@ according to your preferences.
 * [Use single quotes](#use-single-quotes)
 * [Opening braces go on the same line](#opening-braces-go-on-the-same-line)
 * [Method chaining](#method-chaining)
-* [Declare one variable per var statement](#declare-one-variable-per-var-statement)
+* [Declaring variables](#declaring-variables)
 * [Use lowerCamelCase for variables, properties and function names](#use-lowercamelcase-for-variables-properties-and-function-names)
 * [Use UpperCamelCase for class names](#use-uppercamelcase-for-class-names)
 * [Use UPPERCASE for Constants](#use-uppercase-for-constants)
@@ -151,27 +151,13 @@ User.findOne({ name: 'foo' }).populate('bar')
   });
 ````
 
-## Declare one variable per var statement
+## Declaring variables
 
-Declare one variable per var statement, it makes it easier to re-order the
-lines. However, ignore [Crockford][crockfordconvention] when it comes to
+Declare variables using var for the first variable with trailing commas after each declaration, finally followed by a semi-colon. However, ignore [Crockford][crockfordconvention] when it comes to
 declaring variables deeper inside a function, just put the declarations wherever
 they make sense.
 
 *Right:*
-
-```js
-var keys   = ['foo', 'bar'];
-var values = [23, 42];
-
-var object = {};
-while (keys.length) {
-  var key = keys.pop();
-  object[key] = values.pop();
-}
-```
-
-*Wrong:*
 
 ```js
 var keys = ['foo', 'bar'],
@@ -181,6 +167,19 @@ var keys = ['foo', 'bar'],
 
 while (keys.length) {
   key = keys.pop();
+  object[key] = values.pop();
+}
+```
+
+*Wrong:*
+
+```js
+var keys   = ['foo', 'bar'];
+var values = [23, 42];
+
+var object = {};
+while (keys.length) {
+  var key = keys.pop();
   object[key] = values.pop();
 }
 ```
@@ -262,11 +261,11 @@ keys when your interpreter complains:
 *Right:*
 
 ```js
-var a = ['hello', 'world'];
-var b = {
-  good: 'code',
-  'is generally': 'pretty',
-};
+var a = ['hello', 'world'],
+    b = {
+      good: 'code',
+      'is generally': 'pretty',
+    };
 ```
 
 *Wrong:*
