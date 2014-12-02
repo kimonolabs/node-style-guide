@@ -32,7 +32,7 @@ according to your preferences.
 * [Object / Array creation](#object--array-creation)
 * [Use the === operator](#use-the--operator)
 * [Use multi-line ternary operator](#use-multi-line-ternary-operator)
-* [Use slashes for comments](#use-slashes-for-comments)
+* [Use slashes for non jsdoc comments](#use-slashes-for-non-jsdoc-comments)
 * [Object.freeze, Object.preventExtensions, Object.seal, with, eval](#objectfreeze-objectpreventextensions-objectseal-with-eval)
 * [Getters and setters](#getters-and-setters)
 
@@ -472,11 +472,17 @@ setTimeout(function() {
 }, 1000);
 ```
 
-## Use slashes for comments
+## Use slashes for non jsdoc comments
 
 Use slashes for both single line and multi line comments. Try to write
 comments that explain higher level mechanisms or clarify difficult
 segments of your code. Don't use comments to restate trivial things.
+
+We use jsdoc to compile documentation. Make sure you're adding jsdoc
+style comments for anything you'd like to include in the documentation.
+You should always use jsdoc comments for all functions and prototypes,
+labeling their inputs and outputs, with a description of their purposes.
+Familiarize yourself with jsdoc style: [jsdoc docs](http://usejsdoc.org/)
 
 *Right:*
 
