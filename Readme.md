@@ -153,11 +153,25 @@ User.findOne({ name: 'foo' }).populate('bar')
 
 ## Declaring variables
 
-Declare variables using var for the first variable with trailing commas after each declaration, finally followed by a semi-colon. However, ignore [Crockford][crockfordconvention] when it comes to
+Declare variables using a var statement for each variable. 
+However, ignore [Crockford][crockfordconvention] when it comes to
 declaring variables deeper inside a function, just put the declarations wherever
 they make sense.
 
 *Right:*
+
+```js
+var keys   = ['foo', 'bar'];
+var values = [23, 42];
+
+var object = {};
+while (keys.length) {
+  var key = keys.pop();
+  object[key] = values.pop();
+}
+```
+
+*Wrong:*
 
 ```js
 var keys = ['foo', 'bar'],
@@ -167,19 +181,6 @@ var keys = ['foo', 'bar'],
 
 while (keys.length) {
   key = keys.pop();
-  object[key] = values.pop();
-}
-```
-
-*Wrong:*
-
-```js
-var keys   = ['foo', 'bar'];
-var values = [23, 42];
-
-var object = {};
-while (keys.length) {
-  var key = keys.pop();
   object[key] = values.pop();
 }
 ```
